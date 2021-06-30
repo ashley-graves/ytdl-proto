@@ -59,14 +59,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Globals.cs" />
-    <Compile Include="Classes\INI.cs" />
     <Compile Include="Classes\IPC.cs" />
     <Compile Include="Classes\KnownFolders.cs" />
     <Compile Include="Classes\MappingHelper.cs" />
-    <Compile Include="Classes\ProcessUtils.cs" />
     <Compile Include="Classes\Program.cs" />
     <Compile Include="Classes\Utils.cs" />
-    <Compile Include="Classes\ytdl.cs" />
     <Compile Include="Forms\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>

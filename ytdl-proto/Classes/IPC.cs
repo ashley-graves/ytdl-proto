@@ -13,8 +13,6 @@ using static YTDL.Classes.Globals;
 
 namespace YTDL.Classes {
     public class IPC {
-        public TcpListener listener = new TcpListener(IPAddress.Parse("127.0.0.1"), 7634);
-        public TcpClient writer = new TcpClient();
         private string lastRecieved = "";
         public bool isListening = false;
         public bool shouldListen = true;
