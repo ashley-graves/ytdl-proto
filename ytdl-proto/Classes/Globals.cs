@@ -1,5 +1,4 @@
-﻿using Ini;
-using YoutubeDLSharp;
+﻿using YoutubeDLSharp;
 using YoutubeDLSharp.Options;
 using System;
 using System.Collections.Generic;
