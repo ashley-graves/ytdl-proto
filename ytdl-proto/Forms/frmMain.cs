@@ -122,7 +122,8 @@ namespace YTDL.Forms {
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e) {
             e.Cancel = true;
-            WindowState = FormWindowState.Minimized;
+            Hide();
+            TaskbarIcon.Visible = true;
         }
 
         private void TaskbarIcon_MouseDoubleClick(object sender, MouseEventArgs e) {
@@ -130,12 +131,12 @@ namespace YTDL.Forms {
 
         private void TaskbarIcon_MouseClick(object sender, MouseEventArgs e) {
             if (e.Button != MouseButtons.Left) return;
-            WindowState = FormWindowState.Normal;
+            TaskbarIcon.Visible = false;
+            ShowDialog();
             Activate();
         }
 
         private void exitButton_Click(object sender, EventArgs e) {
-            TaskbarIcon.Visible = false;
             Environment.Exit(Environment.ExitCode);
         }
     }
