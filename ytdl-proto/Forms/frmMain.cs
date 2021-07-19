@@ -136,15 +136,13 @@ namespace YTDL.Forms {
             ShowDialog();
         }
 
-        private void exitButton_Click(object sender, EventArgs e) {
-        }
-
         private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
             Environment.Exit(Environment.ExitCode);
         }
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e) {
-
+            frmSettings settings = new frmSettings();
+            settings.ShowDialog();
         }
     }
 }
