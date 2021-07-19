@@ -55,6 +55,7 @@ namespace YTDL.Classes {
                     Action action = () => mainForm.DownloadVideo(str);
                     mainForm.Invoke(action);
                 }
+                Thread.Sleep(1000);
             }
         }
     }

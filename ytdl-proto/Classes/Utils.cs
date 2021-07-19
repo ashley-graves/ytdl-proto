@@ -13,7 +13,7 @@ namespace YTDL.Classes {
         public static bool IsInstalled() {
             bool handler = false;
             using (RegistryKey key = Registry.ClassesRoot.OpenSubKey(@"ytdl\shell\open\command")) {
-                if ((string)key.GetValue("") == cmd) handler = true;
+                if (key != null && (string)key.GetValue("") == cmd) handler = true;
             }
             
             bool startup = false;
