@@ -26,11 +26,16 @@ setInterval(function() {
     if(parent == null) return;
 
     if(document.querySelector("#download-btn") != null) {
-        if(document.querySelector("#download-btn").parentElement != parent) {
-            document.querySelector("#download-btn").remove();
-        } else {
-            return;
+        let elem = document.querySelectorAll("#download-btn");
+        let doReturn = false;
+        for(let i = 0; i < elem.length; i++) {
+            if(elem[i].parentElement != parent) {
+                elem[i].remove();
+            } else {
+                doReturn = true;
+            }
         }
+        if(doReturn) return;
     }
 
     var item = document.createElement("a");
