@@ -19,7 +19,8 @@ namespace YTDL.Forms {
         }
 
         public async void DownloadVideo(string url) {
-            WindowState = FormWindowState.Normal;
+            this.TopMost = true;
+            this.TopMost = false;
             Activate();
 
             Panel pnl = new Panel();
@@ -86,7 +87,7 @@ namespace YTDL.Forms {
             try {
                 data = (await youtubeDl.RunVideoDataFetch(url)).Data;
                 if (data == null) {
-                    MessageBox.Show("Invalid Video URL", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Invalid Video URL\r\n"+url, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 } else if (data.IsLive != null && (bool)data.IsLive) {
                     MessageBox.Show("Cannot download live videos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -133,11 +134,17 @@ namespace YTDL.Forms {
             if (e.Button != MouseButtons.Left) return;
             TaskbarIcon.Visible = false;
             ShowDialog();
-            Activate();
         }
 
         private void exitButton_Click(object sender, EventArgs e) {
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
             Environment.Exit(Environment.ExitCode);
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e) {
+
         }
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace YTDL.Classes {
     public class MappingHelper {
         public MemoryMappedFile file;
-        long capacity = 1024 * 1024 * 10;
+        long capacity = 256;
         public MappingHelper(string fileName) {
             file = MemoryMappedFile.CreateOrOpen(fileName, capacity);
         }
@@ -28,16 +28,16 @@ namespace YTDL.Classes {
             using (var stream = file.CreateViewStream()) {
                 using (var reader = new BinaryReader(stream)) {
                     List<byte> bytes = new List<byte>();
-                    byte[] temp = new byte[1024];
                     while (true) {
+                        byte[] temp = new byte[256];
                         int readCount = reader.Read(temp, 0, temp.Length);
                         if (readCount == 0) {
                             break;
                         }
-                        for (int i = 1; i < readCount; i++) {
-                            bytes.Add(temp[i]);
-                        }
+                        bytes.AddRange(temp);
                     }
+                    bytes[0] = 0;
+                    GC.Collect();
                     if (bytes.Count > 0) {
                         //Remove "\0"
                         return Encoding.Default.GetString(bytes.ToArray()).Replace("\0", "");

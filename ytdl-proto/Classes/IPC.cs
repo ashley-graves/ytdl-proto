@@ -52,10 +52,15 @@ namespace YTDL.Classes {
                 string str = Read();
                 if (!string.IsNullOrEmpty(str)) {
                     str = str.Split('&')[0];
-                    Action action = () => mainForm.DownloadVideo(str);
-                    mainForm.Invoke(action);
+                    if(mainForm.Visible) {
+                        Action action = () => mainForm.DownloadVideo(str);
+                        mainForm.Invoke(action);
+                    } else {
+                        new Thread(() => mainForm.ShowDialog()).Start();
+                        Write(str);
+                    }
                 }
-                Thread.Sleep(1000);
+                Thread.Sleep(100);
             }
         }
     }
